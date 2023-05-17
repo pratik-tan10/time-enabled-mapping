@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en"><Esri><CreaDate>20230308</CreaDate><CreaTime>13530300</CreaTime><ArcGISFormat>1.0</ArcGISFormat><SyncOnce>TRUE</SyncOnce><DataProperties><lineage><Process ToolSource="c:\program files (x86)\arcgis\desktop10.8\ArcToolbox\Toolboxes\Data Management Tools.tbx\DeleteField" Date="20230308" Time="135303">DeleteField states FID_;OBJECTID;STATE_ABBR;STATE_FIPS;ORDER_ADM;MONTH_ADM;DAY_ADM;YEAR_ADM;TYPE_;POP;SQ_MILES;PRIM_MILES;Shape_Leng;Shape__Are;Shape__Len</Process></lineage></DataProperties></Esri></metadata>

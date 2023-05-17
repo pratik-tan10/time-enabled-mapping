@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>US Population Throughout the Years</title>
+    <style>
+		body {
+				justify:center;
+				margin: 10px solid red;
+		}
+        .container {
+			padding-left:25%;
+            max-width: 80%;
+            padding: 20px;
+        }
+
+        #carousel {
+            width: 80%;
+            height: auto;
+            overflow: hidden;
+			margin: 10px solid red;
+        }
+
+        #carousel img {
+            width: 80%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+	<div class = "container">
+    <h1>Image Carousel with Time Slider</h1>
+    <div id="carousel"></div>
+    <input type="range" id="timeSlider" min="1" max="5" step="1">
+    <button id="pausePlayBtn">Pause</button>
+	</div>
+    <script>
+        const imagesFolder = "./simgs/";
+        const carousel = document.getElementById("carousel");
+        const timeSlider = document.getElementById("timeSlider");
+        const pausePlayBtn = document.getElementById("pausePlayBtn");
+        let slides = [];
+        let currentSlideIndex = 0;
+        let intervalId;
+
+        // Read images from folder and create slides
+        function loadImages() {
+            // Simulating asynchronous loading of images
+            setTimeout(() => {
+                // Replace the following lines with your own logic to read images from the folder
+                const imageUrls = ['Population_1950.png', 'Population_1955.png', 'Population_1960.png', 'Population_1965.png', 'Population_1970.png', 'Population_1975.png', 'Population_1980.png', 'Population_1985.png', 'Population_1990.png', 'Population_1995.png', 'Population_2000.png', 'Population_2005.png', 'Population_2010.png', 'Population_2015.png', 'Population_2020.png']
+				
+                slides = imageUrls.map(url => {
+                    const img = document.createElement("img");
+                    img.src = imagesFolder + url;
+                    return img;
+                });
+
+                showSlide(currentSlideIndex);
+				updateTimeSliderMax();
+                startCarousel();
+            }, 100); // Delayed loading for demonstration purposes
+        }
+
+        // Display a specific slide
+        function showSlide(index) {
+            carousel.innerHTML = "";
+            carousel.appendChild(slides[index].cloneNode());
+            timeSlider.value = index + 1;
+        }
+		
+		// Update the max property of the timeSlider
+		function updateTimeSliderMax() {
+			timeSlider.max = slides.length;
+		}
+
+        // Start the carousel
+        function startCarousel() {
+            intervalId = setInterval(() => {
+                currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+                showSlide(currentSlideIndex);
+            }, 1000);
+        }
+
+        // Pause or resume the carousel
+        function toggleCarousel() {
+            if (intervalId) {
+                clearInterval(intervalId);
+                intervalId = null;
+                pausePlayBtn.textContent = "Play";
+            } else {
+                startCarousel();
+                pausePlayBtn.textContent = "Pause";
+            }
+        }
+
+        // Event listeners
+        timeSlider.addEventListener("input", () => {
+            currentSlideIndex = parseInt(timeSlider.value) - 1;
+            showSlide(currentSlideIndex);
+        });
+
+        pausePlayBtn.addEventListener("click", toggleCarousel);
+
+        // Load images and start the carousel
+        loadImages();
+    </script>
+</body>
+</html>
