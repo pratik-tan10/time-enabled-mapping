@@ -2,7 +2,7 @@
 This project demonstrates how to create a dynamic map on ArcMap, export layouts using Python, and convert the series of static images to an interactive web map. The data preparation consisted of join, spatial join, transposing, field calculation, and time enabling on the layer.
 
 ### Requirements
-- ArcMap 10.8 or higher
+- ArcMap 10.x
 - Python 2.7 or higher
 <br>
 
